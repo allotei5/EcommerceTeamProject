@@ -1,6 +1,6 @@
 <?php
 //Database credentials
-define("DATABASE", "shoppn");
+define("DATABASE", "bookstore");
 define("SERVER", "localhost");
 define("USERNAME", "root");
 define("PASSWD", "");
