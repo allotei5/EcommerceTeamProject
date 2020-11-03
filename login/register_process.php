@@ -45,7 +45,7 @@ if(isset($_POST['submit'])){
     //if there are no errors
     if(count($errors) == 0){
         $enc_password = md5($password);
-        $register_customer = register_customer_fxn($name, $email, $password, $country, $city, $street, $zip_code, $contact);
+        $register_customer = register_customer_fxn($name, $email, $enc_password, $country, $city, $street, $zip_code, $contact);
 
         if($register_customer){
             echo "success";

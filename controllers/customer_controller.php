@@ -32,4 +32,19 @@ function check_for_existing_customer_fxn($email){
     }
 }
 
+function verify_customer_fxn($email){
+    //create instance of class
+    $customer_object = new customer_class;
+
+    //run the query
+    $run_query = $customer_object->verify_customer($email);
+
+    if($run_query){
+        $login_details_arr = $customer_object->db_fetch();
+        return $login_details_arr;
+    }else{
+        return false;
+    }
+}
+
 ?>

@@ -28,5 +28,14 @@ class customer_class extends db_connection
         return $this->db_query($sql);
     }
 
+    /*Method to verify customer logins
+    *takes email
+    */
+
+    public function verify_customer($email){
+        $sql = "SELECT `user_email`, `user_pass`, `user_id`, `user_role` FROM `user` WHERE `user_email` = '$email'";
+
+        return $this->db_query($sql);
+    }
 }
 ?>
