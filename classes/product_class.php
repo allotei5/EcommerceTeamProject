@@ -67,6 +67,12 @@ class product_class extends db_connection
         $sql = "DELETE FROM `genres` WHERE `genre_id`='$id'";
         return $this->db_query($sql);
     }
+
+    /*methods to add, edit, update and delete books */
+    public function add_book($genre,$author,$title,$price,$desc,$img,$publisher,$pub_year,$stock){
+        $sql = "INSERT INTO `books`(`book_genre`, `author_id`, `book_title`, `book_price`, `book_desc`, `book_image`, `publisher`, `published_year`, `stock`) VALUES ('$genre','$author','$title','$price','$desc','$img','$publisher','$pub_year','$stock')";
+        return $this->db_query($sql);
+    }
 }
 
 

@@ -140,4 +140,17 @@ function delete_genre_fxn($id){
     }
 }
 
+function add_book_fxn($genre,$author,$title,$price,$desc,$img,$publisher,$pub_year,$stock){
+    $product_object = new product_class;
+
+    //run the query
+    $run_query = $product_object->add_book($genre,$author,$title,$price,$desc,$img,$publisher,$pub_year,$stock);
+
+    if ($run_query){
+        return $run_query;
+    }else{
+        return false;
+    }
+}
+
 ?>
