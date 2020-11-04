@@ -73,6 +73,26 @@ class product_class extends db_connection
         $sql = "INSERT INTO `books`(`book_genre`, `author_id`, `book_title`, `book_price`, `book_desc`, `book_image`, `publisher`, `published_year`, `stock`) VALUES ('$genre','$author','$title','$price','$desc','$img','$publisher','$pub_year','$stock')";
         return $this->db_query($sql);
     }
+
+    public function display_books(){
+        $sql = "SELECT * FROM `books`";
+        return $this->db_query($sql);
+    }
+
+    public function display_one_book($id){
+        $sql = "SELECT `author`.`author_name`, `author`.`author_id`,`genres`.`genre_name`,`genres`.`genre_id`, `books`.`isbn`, `books`.`book_title`, `books`.`book_price`, `books`.`book_desc`, `books`.`publisher`, `books`.`published_year`, `books`.`stock` FROM `books` JOIN `author` ON (`author`.`author_id` = `books`.`author_id`) JOIN `genres` ON (`genres`.`genre_id` = `books`.`book_genre`) WHERE `isbn` = '$id'";
+        return $this->db_query($sql);
+    }
+
+    public function update_book($isbn,$genre,$author,$title,$price,$desc,$img,$publisher,$pub_year,$stock){
+        $sql = "UPDATE `books` SET `book_genre`='$genre',`author_id`='$author',`book_title`='$title',`book_price`='$price',`book_desc`='$desc',`book_image`='$img',`publisher`='$publisher',`published_year`='$pub_year',`stock`='$stock' WHERE `isbn`='$isbn'";
+        return $this->db_query($sql);
+    }
+
+    public function delete_book($isbn){
+        $sql = "DELETE FROM `books` WHERE `isbn`='$isbn'";
+        return $this->db_query($sql);
+    }
 }
 
 

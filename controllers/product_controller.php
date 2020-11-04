@@ -153,4 +153,60 @@ function add_book_fxn($genre,$author,$title,$price,$desc,$img,$publisher,$pub_ye
     }
 }
 
+function display_books_fxn(){
+    $product_object = new product_class;
+
+    //run the query
+    $run_query = $product_object->display_books();
+
+    if($run_query){
+        while($record = $product_object->db_fetch()){
+            $books_arr[] = $record;
+        }
+        return $books_arr;
+    }else{
+        return false;
+    }
+}
+
+function display_one_book_fxn($id){
+    $product_object = new product_class;
+
+    //run the query
+    $run_query = $product_object->display_one_book($id);
+
+    if($run_query){
+        $books_arr = $product_object->db_fetch();
+        return $books_arr;
+    }else{
+        return false;
+    }
+}
+
+function update_book_fxn($isbn,$genre,$author,$title,$price,$desc,$img,$publisher,$pub_year,$stock){
+   $product_object = new product_class;
+
+    //run the query
+    $run_query = $product_object->update_book($isbn,$genre,$author,$title,$price,$desc,$img,$publisher,$pub_year,$stock);
+
+    if ($run_query){
+        return $run_query;
+    }else{
+        return false;
+    }
+}
+
+function delete_book_fxn($isbn){
+    $product_object = new product_class;
+
+    //run the query
+    $run_query = $product_object->delete_book($isbn);
+
+    if ($run_query){
+        return $run_query;
+    }else{
+        return false;
+    }
+}
+
 ?>

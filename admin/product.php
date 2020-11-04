@@ -1,3 +1,8 @@
+<?php
+require("../controllers/product_controller.php");
+$books_arr = display_books_fxn();
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -27,14 +32,19 @@
     </tr>
   </thead>
   <tbody>
+    <?php
+      $counter = 1;
+      foreach($books_arr as $data){
+    ?>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td><a href="" class="btn btn-primary">Update</a></td>
-      <td><a href="" class="btn btn-danger">Delete</a></td>
+      <th scope="row"><?php echo $counter; $counter++ ?></th>
+      <td><?php echo $data['book_title']; ?></td>
+      <td><?php echo $data['book_price']; ?></td>
+      <td><?php echo $data['stock']; ?></td>
+      <td><a href="<?php echo "product_update.php?id=".$data['isbn'] ?>" class="btn btn-primary">Update</a></td>
+      <td><a href="<?php echo "../functions/product_delete.php?isbn=".$data['isbn'] ?>" class="btn btn-danger">Delete</a></td>
     </tr>
+    <?php } ?>
   </tbody>
 </table>
 
