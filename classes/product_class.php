@@ -40,6 +40,34 @@ class product_class extends db_connection
         $sql = "DELETE FROM `author` WHERE `author_id`='$id'";
         return $this->db_query($sql);
     }
+
+    /*methods to add, display, update, and delete a genre*/
+
+    public function add_genre($name){
+        $sql = "INSERT INTO `genres`(`genre_name`) VALUES ('$name')";
+        return $this->db_query($sql);
+    }
+
+    public function display_genres(){
+        $sql = "SELECT * FROM `genres`";
+        return $this->db_query($sql);
+    }
+
+    public function display_one_genre($id){
+        $sql = "SELECT `genre_name` FROM `genres` WHERE `genre_id` ='$id'";
+        return $this->db_query($sql);
+    }
+
+    public function update_genre($id, $name){
+        $sql = "UPDATE `genres` SET `genre_name`='$name' WHERE `genre_id`='$id'";
+        return $this->db_query($sql);
+    }
+
+    public function delete_genre($id){
+        $sql = "DELETE FROM `genres` WHERE `genre_id`='$id'";
+        return $this->db_query($sql);
+    }
 }
+
 
 ?>

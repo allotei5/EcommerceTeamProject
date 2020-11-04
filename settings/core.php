@@ -26,7 +26,7 @@ function check_permission(){
 		$uperm = $_SESSION['user_role'];
 		if ($uperm != 1) {
 			//redirect user
-    		header('location: ../view/index.php');
+    		header('Location: ../login/login.php');
 		}
 	}
 }

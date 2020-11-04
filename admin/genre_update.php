@@ -1,7 +1,7 @@
 <?php
-require("../settings/core.php");
 require("../controllers/product_controller.php");
-$author_arr = display_authors_fxn();
+$genre_arr = display_one_genre($_GET['id']);
+
 ?>
 
 <!doctype html>
@@ -14,34 +14,25 @@ $author_arr = display_authors_fxn();
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-    <title>Authors</title>
+    <title>Genres</title>
   </head>
   <body>
     <div class="container">
-      <h1>Authors</h1>
-    <h6>Add New Author</h6>
+      <h1>Genres</h1>
+    <h6>Update Genre</h6>
 
-    <form method="post" action="../functions/author_add.php">
+    <form method="post" action="../functions/genre_update.php">
       <div class="form-row">
         <div class="form-group col-md-6">
-          <input type="text" class="form-control" id="authorname" name="name" placeholder="Author Name">
+          <input type="text" class="form-control" id="genrename" name="name" value="<?php echo $genre_arr['genre_name']; ?>">
         </div>
         <div class="form-group col-md-6">
           <button type="submit" class="btn btn-primary" name="submit">Submit</button>
         </div>
       </div>
+      <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
 </form>
-    <ul class="list-group">
-    <?php
-     foreach($author_arr as $data){
-    ?>
-        <li class="list-group-item"><?php echo $data['author_name']; ?>
-        <a href="<?php echo '../functions/author_delete.php?id='.$data['author_id']; ?>" class="btn btn-danger float-right mx-sm-3">Delete</a>
-        <a href="<?php echo 'author_update.php?id='.$data['author_id'] ?>" class="btn btn-primary float-right">Update</a>
 
-        </li>
-    <?php } ?>
-</ul>
 
     </div>
 

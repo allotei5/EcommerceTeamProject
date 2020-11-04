@@ -71,4 +71,73 @@ function delete_author_fxn($id){
     }
 }
 
+function add_genre_fxn($name){
+    $product_object = new product_class;
+
+    //run the query
+    $run_query = $product_object->add_genre($name);
+
+    if($run_query){
+        return $run_query;
+    }else{
+        return false;
+    }
+}
+
+function display_genres_fxn(){
+    $product_object = new product_class;
+
+    //run the query
+    $run_query = $product_object->display_genres();
+
+    if($run_query){
+        while($record = $product_object->db_fetch()){
+            $genre_arr[] = $record;
+        }
+        return $genre_arr;
+    }else{
+        return false;
+    }
+}
+
+function display_one_genre($id){
+    $product_object = new product_class;
+
+    //run the query
+    $run_query = $product_object->display_one_genre($id);
+
+    if($run_query){
+        $genre_arr = $product_object->db_fetch();
+        return $genre_arr;
+    }else{
+        return false;
+    }
+}
+
+function update_genre_fxn($id,$name){
+    $product_object = new product_class;
+
+    //run the query
+    $run_query = $product_object->update_genre($id, $name);
+
+    if ($run_query){
+        return $run_query;
+    }else{
+        return false;
+    }
+}
+
+function delete_genre_fxn($id){
+    $product_object = new product_class;
+
+    //run the query
+    $run_query = $product_object->delete_genre($id);
+
+    if ($run_query){
+        return $run_query;
+    }else{
+        return false;
+    }
+}
+
 ?>
