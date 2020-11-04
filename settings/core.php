@@ -24,11 +24,9 @@ function check_permission(){
 	if (isset($_SESSION['user_role'])) {
 		//assign session to an array
 		$uperm = $_SESSION['user_role'];
-		if ($uperm == 2) {
-			//return role number
-    		return 2;
-		}else{
-			return 1;
+		if ($uperm != 1) {
+			//redirect user
+    		header('location: ../view/index.php');
 		}
 	}
 }
