@@ -209,4 +209,20 @@ function delete_book_fxn($isbn){
     }
 }
 
+function search_for_book_fxn($search_term){
+    $product_object = new product_class;
+
+    //run the query
+    $run_query = $product_object->search_for_book($search_term);
+    $books_arr = array();
+    if($run_query){
+        while($record = $product_object->db_fetch()){
+            $books_arr[] = $record;
+        }
+        return $books_arr;
+    }else{
+        return false;
+    }
+}
+
 ?>

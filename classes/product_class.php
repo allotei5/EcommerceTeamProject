@@ -75,7 +75,7 @@ class product_class extends db_connection
     }
 
     public function display_books(){
-        $sql = "SELECT * FROM `books`";
+        $sql = "SELECT `author`.`author_name`, `author`.`author_id`,`genres`.`genre_name`,`genres`.`genre_id`, `books`.`isbn`, `books`.`book_title`, `books`.`book_price`, `books`.`book_desc`, `books`.`publisher`, `books`.`published_year`, `books`.`stock` FROM `books` JOIN `author` ON (`author`.`author_id` = `books`.`author_id`) JOIN `genres` ON (`genres`.`genre_id` = `books`.`book_genre`)";
         return $this->db_query($sql);
     }
 
@@ -91,6 +91,12 @@ class product_class extends db_connection
 
     public function delete_book($isbn){
         $sql = "DELETE FROM `books` WHERE `isbn`='$isbn'";
+        return $this->db_query($sql);
+    }
+
+    //method to seaerch for books
+    public function search_for_book($search_term){
+        $sql = "SELECT * FROM `books` WHERE `book_title` LIKE '$search_term'";
         return $this->db_query($sql);
     }
 }
